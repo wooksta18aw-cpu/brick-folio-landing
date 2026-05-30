@@ -5,23 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script>
-      const APP_URL = "brickfolio:///login";
+      const ANDROID_INTENT =
+        "intent://login#Intent;scheme=brickfolio;package=app.brickfolio.xnvbndfgvyrsp43izimwz;end";
 
-      // Replace later with real App Store URL
-      const IOS_STORE_URL =
-        "https://apps.apple.com/app/id0000000000";
+      const IOS_URL = "brickfolio:///login";
 
-      function isIOS() {
-        return /iPad|iPhone|iPod/.test(navigator.userAgent);
+      function isAndroid() {
+        return /Android/i.test(navigator.userAgent);
       }
 
       function openApp() {
-        window.location.href = APP_URL;
-
-        if (isIOS()) {
-          setTimeout(() => {
-            window.location.href = IOS_STORE_URL;
-          }, 2500);
+        if (isAndroid()) {
+          window.location.href = ANDROID_INTENT;
+        } else {
+          window.location.href = IOS_URL;
         }
       }
 
@@ -31,30 +28,13 @@
     </script>
   </head>
 
-  <body
-    style="
-      background:#4A0014;
-      color:white;
-      font-family:Arial;
-      padding:24px;
-      text-align:center;
-    "
-  >
+  <body style="background:#4A0014;color:white;font-family:Arial;padding:24px;text-align:center;">
     <h1>Opening BrickFolio...</h1>
-
     <p>If the app does not open automatically, tap below.</p>
 
     <button
       onclick="openApp()"
-      style="
-        background:#FF1F2D;
-        color:white;
-        border:0;
-        border-radius:14px;
-        padding:14px 20px;
-        font-size:16px;
-        font-weight:bold;
-      "
+      style="background:#FF1F2D;color:white;border:0;border-radius:14px;padding:14px 20px;font-size:16px;font-weight:bold;"
     >
       Open BrickFolio
     </button>
